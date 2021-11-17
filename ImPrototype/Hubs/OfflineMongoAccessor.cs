@@ -52,7 +52,23 @@ namespace ImPrototype.Hubs
                     };
                     message.MessageId = 0;
                     mailbox.Messages.Add(message);
-                    await _offlineMessageCollection.InsertOneAsync(mailbox);
+                    try
+                    {
+                        await _offlineMessageCollection.InsertOneAsync(mailbox);
+                    }
+                    catch(MongoDuplicateKeyException e)
+                    {
+                        // temp fix for potential duplicate key problem
+                        findResult = await _offlineMessageCollection.Find(filter).Project(x => x.MaxMessageId).Limit(1).ToListAsync();
+                        message.MessageId = findResult.FirstOrDefault();
+                        var updater = Builders<OfflineMailbox>.Update
+                            .Push("Messages", message)
+                            .Set("LastUpdate", DateTime.UtcNow)
+                            .Inc("MaxMessageId", 1);
+                        var updateResult = await _offlineMessageCollection.UpdateOneAsync(filter, updater);
+                        return updateResult.IsAcknowledged;
+                    }
+                    
                     return true;
                 }
                 else
