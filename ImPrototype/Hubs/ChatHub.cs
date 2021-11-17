@@ -31,7 +31,7 @@ namespace ImPrototype.Hubs
                 Type = MessageType.Text,
                 UniqueKey = uniqueKey
             };
-            var lastMessage =  _offlineMongoAccessor.GetLastOfflineMessages(user);
+            var lastMessage =  _offlineMongoAccessor.GetLastOfflineMessages(destUser);
             if (lastMessage != null && lastMessage.UniqueKey.Equals(uniqueKey))
             {
                 // duplicate msg
@@ -64,6 +64,11 @@ namespace ImPrototype.Hubs
                     ConnectionId = Context.ConnectionId,
                     UserName = userName,
                 });
+        }
+
+        public void Logout(string userName)
+        {
+            _connectionManager.RemoveConnectionByName(userName);
         }
 
         public async Task PullOffline(PullOfflineMessageRequest request)

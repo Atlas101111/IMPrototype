@@ -19,6 +19,11 @@ namespace ImPrototype.Hubs
         {
             return connections.Find(x => x.UserName.Equals(userName));
         }
+        public void RemoveConnectionByName(string userName)
+        {
+            var info = GetConnectionByName(userName);
+            RemoveConnection(info);
+        }
 
         public bool AddConnection(UserInfo userInfo)
         {
@@ -27,6 +32,19 @@ namespace ImPrototype.Hubs
                 connections.Add(userInfo);
             }
             catch(Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool RemoveConnection(UserInfo userInfo)
+        {
+            try
+            {
+                connections.Remove(userInfo);
+            }
+            catch (Exception e)
             {
                 return false;
             }
