@@ -20,6 +20,12 @@ namespace ImPrototype.Hubs
             return base.OnConnectedAsync();
         }
 
+        public override Task OnDisconnectedAsync(Exception exception)
+        {
+            _connectionManager.RemoveConnectionById(Context.ConnectionId);
+            return base.OnDisconnectedAsync(exception);
+        }
+
         public async Task SendMessageP2P(string user, string destUser, string message, string uniqueKey)
         {
             var connectionId = _connectionManager.GetConnectionByName(destUser)?.ConnectionId;
@@ -42,12 +48,6 @@ namespace ImPrototype.Hubs
             if (!string.IsNullOrEmpty(connectionId) && persisted)
             {
                 // destUser online
-
-
-                if(newMessage.MessageId == 18 || newMessage.MessageId == 19)
-                {
-                    return;
-                }
 
                 await Clients.Client(connectionId).SendAsync("ReceiveMessage", newMessage);
             }

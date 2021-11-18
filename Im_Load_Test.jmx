@@ -77,6 +77,18 @@
           <stringProp name="dataFile"></stringProp>
         </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
         <hashTree/>
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="GetEmpty" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">4000</stringProp>
+          <boolProp name="optional">false</boolProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree/>
         <eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler" testname="Login" enabled="true">
           <boolProp name="createNewConnection">false</boolProp>
           <boolProp name="TLS">false</boolProp>
@@ -85,13 +97,27 @@
           <stringProp name="path"></stringProp>
           <stringProp name="connectTimeout">20000</stringProp>
           <boolProp name="binaryPayload">false</boolProp>
-          <stringProp name="requestData">{&quot;arguments&quot;:[&quot;${__threadGroupName}-${__threadNum}&quot;],&quot;invocationId&quot;:&quot;1&quot;,&quot;target&quot;:&quot;Login&quot;,&quot;type&quot;:1}&#x1e;{&quot;arguments&quot;:[{&quot;AccountUuid&quot;:&quot;${__threadGroupName}-${__threadNum}&quot;,&quot;Offset&quot;:0,&quot;Size&quot;:10}],&quot;invocationId&quot;:&quot;2&quot;,&quot;target&quot;:&quot;PullOffline&quot;,&quot;type&quot;:1}&#x1e;</stringProp>
+          <stringProp name="requestData">{&quot;arguments&quot;:[&quot;${__threadGroupName}-${__threadNum}&quot;],&quot;invocationId&quot;:&quot;0&quot;,&quot;target&quot;:&quot;Login&quot;,&quot;type&quot;:1}&#x1e;</stringProp>
           <stringProp name="readTimeout">6000</stringProp>
           <boolProp name="loadDataFromFile">false</boolProp>
           <stringProp name="dataFile"></stringProp>
         </eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler>
         <hashTree/>
-        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="WebSocket Single Read Sampler" enabled="true">
+        <eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler" testname="PullOffline" enabled="true">
+          <boolProp name="createNewConnection">false</boolProp>
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <boolProp name="binaryPayload">false</boolProp>
+          <stringProp name="requestData">{&quot;arguments&quot;:[{&quot;AccountUuid&quot;:&quot;${__threadGroupName}-${__threadNum}&quot;,&quot;Offset&quot;:0,&quot;Size&quot;:10}],&quot;invocationId&quot;:&quot;1&quot;,&quot;target&quot;:&quot;PullOffline&quot;,&quot;type&quot;:1}&#x1e;</stringProp>
+          <stringProp name="readTimeout">6000</stringProp>
+          <boolProp name="loadDataFromFile">false</boolProp>
+          <stringProp name="dataFile"></stringProp>
+        </eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler>
+        <hashTree/>
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="PullOffline Response" enabled="true">
           <boolProp name="TLS">false</boolProp>
           <stringProp name="server"></stringProp>
           <stringProp name="port">80</stringProp>
@@ -99,7 +125,7 @@
           <stringProp name="connectTimeout">20000</stringProp>
           <stringProp name="dataType">Text</stringProp>
           <boolProp name="createNewConnection">false</boolProp>
-          <stringProp name="readTimeout">100</stringProp>
+          <stringProp name="readTimeout">3000</stringProp>
           <boolProp name="optional">false</boolProp>
         </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
         <hashTree/>
@@ -109,7 +135,7 @@
         </LoopController>
         <hashTree>
           <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
-            <stringProp name="CounterConfig.start">0</stringProp>
+            <stringProp name="CounterConfig.start">2</stringProp>
             <stringProp name="CounterConfig.end">100</stringProp>
             <stringProp name="CounterConfig.incr">1</stringProp>
             <stringProp name="CounterConfig.name">loopCount</stringProp>
@@ -117,19 +143,6 @@
             <boolProp name="CounterConfig.per_user">true</boolProp>
             <boolProp name="CounterConfig.reset_on_tg_iteration">true</boolProp>
           </CounterConfig>
-          <hashTree/>
-          <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="WebSocket Heartbeat" enabled="true">
-            <boolProp name="TLS">false</boolProp>
-            <stringProp name="server"></stringProp>
-            <stringProp name="port">80</stringProp>
-            <stringProp name="path"></stringProp>
-            <stringProp name="connectTimeout">20000</stringProp>
-            <boolProp name="binaryPayload">false</boolProp>
-            <stringProp name="requestData">{&quot;type&quot;:6}&#x1e;</stringProp>
-            <boolProp name="createNewConnection">false</boolProp>
-            <boolProp name="loadDataFromFile">false</boolProp>
-            <stringProp name="dataFile"></stringProp>
-          </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
           <hashTree/>
           <eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler" testname="Send Message" enabled="true">
             <boolProp name="createNewConnection">false</boolProp>
@@ -140,6 +153,20 @@
             <stringProp name="connectTimeout">20000</stringProp>
             <boolProp name="binaryPayload">false</boolProp>
             <stringProp name="requestData">{&quot;arguments&quot;:[&quot;${__threadGroupName}-${__threadNum}&quot;,&quot;Sender Group 2-${__threadNum}&quot;,&quot;DDD&quot;,&quot;${loopCount}&quot;],&quot;invocationId&quot;:&quot;${loopCount}&quot;,&quot;target&quot;:&quot;SendMessageP2P&quot;,&quot;type&quot;:1}&#x1e;</stringProp>
+            <stringProp name="readTimeout">6000</stringProp>
+            <boolProp name="loadDataFromFile">false</boolProp>
+            <stringProp name="dataFile"></stringProp>
+          </eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler>
+          <hashTree/>
+          <eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler" testname="Heartbeat" enabled="true">
+            <boolProp name="createNewConnection">false</boolProp>
+            <boolProp name="TLS">false</boolProp>
+            <stringProp name="server"></stringProp>
+            <stringProp name="port">80</stringProp>
+            <stringProp name="path"></stringProp>
+            <stringProp name="connectTimeout">20000</stringProp>
+            <boolProp name="binaryPayload">false</boolProp>
+            <stringProp name="requestData">{&quot;type&quot;:6}&#x1e;</stringProp>
             <stringProp name="readTimeout">6000</stringProp>
             <boolProp name="loadDataFromFile">false</boolProp>
             <stringProp name="dataFile"></stringProp>
@@ -229,6 +256,18 @@
           <stringProp name="dataFile"></stringProp>
         </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
         <hashTree/>
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="GetEmpty" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">4000</stringProp>
+          <boolProp name="optional">false</boolProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree/>
         <eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler" testname="Login" enabled="true">
           <boolProp name="createNewConnection">false</boolProp>
           <boolProp name="TLS">false</boolProp>
@@ -237,13 +276,27 @@
           <stringProp name="path"></stringProp>
           <stringProp name="connectTimeout">20000</stringProp>
           <boolProp name="binaryPayload">false</boolProp>
-          <stringProp name="requestData">{&quot;arguments&quot;:[&quot;${__threadGroupName}-${__threadNum}&quot;],&quot;invocationId&quot;:&quot;1&quot;,&quot;target&quot;:&quot;Login&quot;,&quot;type&quot;:1}&#x1e;{&quot;arguments&quot;:[{&quot;AccountUuid&quot;:&quot;${__threadGroupName}-${__threadNum}&quot;,&quot;Offset&quot;:0,&quot;Size&quot;:10}],&quot;invocationId&quot;:&quot;2&quot;,&quot;target&quot;:&quot;PullOffline&quot;,&quot;type&quot;:1}&#x1e;</stringProp>
+          <stringProp name="requestData">{&quot;arguments&quot;:[&quot;${__threadGroupName}-${__threadNum}&quot;],&quot;invocationId&quot;:&quot;0&quot;,&quot;target&quot;:&quot;Login&quot;,&quot;type&quot;:1}&#x1e;</stringProp>
           <stringProp name="readTimeout">6000</stringProp>
           <boolProp name="loadDataFromFile">false</boolProp>
           <stringProp name="dataFile"></stringProp>
         </eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler>
         <hashTree/>
-        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="WebSocket Single Read Sampler" enabled="true">
+        <eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler" testname="PullOffline" enabled="true">
+          <boolProp name="createNewConnection">false</boolProp>
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <boolProp name="binaryPayload">false</boolProp>
+          <stringProp name="requestData">{&quot;arguments&quot;:[{&quot;AccountUuid&quot;:&quot;${__threadGroupName}-${__threadNum}&quot;,&quot;Offset&quot;:0,&quot;Size&quot;:10}],&quot;invocationId&quot;:&quot;1&quot;,&quot;target&quot;:&quot;PullOffline&quot;,&quot;type&quot;:1}&#x1e;</stringProp>
+          <stringProp name="readTimeout">6000</stringProp>
+          <boolProp name="loadDataFromFile">false</boolProp>
+          <stringProp name="dataFile"></stringProp>
+        </eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler>
+        <hashTree/>
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="PullOffline Response" enabled="true">
           <boolProp name="TLS">false</boolProp>
           <stringProp name="server"></stringProp>
           <stringProp name="port">80</stringProp>
@@ -251,7 +304,7 @@
           <stringProp name="connectTimeout">20000</stringProp>
           <stringProp name="dataType">Text</stringProp>
           <boolProp name="createNewConnection">false</boolProp>
-          <stringProp name="readTimeout">100</stringProp>
+          <stringProp name="readTimeout">3000</stringProp>
           <boolProp name="optional">false</boolProp>
         </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
         <hashTree/>
@@ -261,7 +314,7 @@
         </LoopController>
         <hashTree>
           <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
-            <stringProp name="CounterConfig.start">0</stringProp>
+            <stringProp name="CounterConfig.start">2</stringProp>
             <stringProp name="CounterConfig.end">100</stringProp>
             <stringProp name="CounterConfig.incr">1</stringProp>
             <stringProp name="CounterConfig.name">loopCount</stringProp>
@@ -269,19 +322,6 @@
             <boolProp name="CounterConfig.per_user">true</boolProp>
             <boolProp name="CounterConfig.reset_on_tg_iteration">true</boolProp>
           </CounterConfig>
-          <hashTree/>
-          <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="WebSocket Heartbeat" enabled="true">
-            <boolProp name="TLS">false</boolProp>
-            <stringProp name="server"></stringProp>
-            <stringProp name="port">80</stringProp>
-            <stringProp name="path"></stringProp>
-            <stringProp name="connectTimeout">20000</stringProp>
-            <boolProp name="binaryPayload">false</boolProp>
-            <stringProp name="requestData">{&quot;type&quot;:6}&#x1e;</stringProp>
-            <boolProp name="createNewConnection">false</boolProp>
-            <boolProp name="loadDataFromFile">false</boolProp>
-            <stringProp name="dataFile"></stringProp>
-          </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
           <hashTree/>
           <eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler" testname="Send Message" enabled="true">
             <boolProp name="createNewConnection">false</boolProp>
@@ -292,6 +332,20 @@
             <stringProp name="connectTimeout">20000</stringProp>
             <boolProp name="binaryPayload">false</boolProp>
             <stringProp name="requestData">{&quot;arguments&quot;:[&quot;${__threadGroupName}-${__threadNum}&quot;,&quot;Sender Group 1-${__threadNum}&quot;,&quot;DDD&quot;,&quot;${loopCount}&quot;],&quot;invocationId&quot;:&quot;${loopCount}&quot;,&quot;target&quot;:&quot;SendMessageP2P&quot;,&quot;type&quot;:1}&#x1e;</stringProp>
+            <stringProp name="readTimeout">6000</stringProp>
+            <boolProp name="loadDataFromFile">false</boolProp>
+            <stringProp name="dataFile"></stringProp>
+          </eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler>
+          <hashTree/>
+          <eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler" testname="Heartbeat" enabled="true">
+            <boolProp name="createNewConnection">false</boolProp>
+            <boolProp name="TLS">false</boolProp>
+            <stringProp name="server"></stringProp>
+            <stringProp name="port">80</stringProp>
+            <stringProp name="path"></stringProp>
+            <stringProp name="connectTimeout">20000</stringProp>
+            <boolProp name="binaryPayload">false</boolProp>
+            <stringProp name="requestData">{&quot;type&quot;:6}&#x1e;</stringProp>
             <stringProp name="readTimeout">6000</stringProp>
             <boolProp name="loadDataFromFile">false</boolProp>
             <stringProp name="dataFile"></stringProp>
