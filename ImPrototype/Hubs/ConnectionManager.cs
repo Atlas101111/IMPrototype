@@ -11,7 +11,7 @@ namespace ImPrototype.Hubs
     {
         private static readonly List<UserInfo> connections = new List<UserInfo>();
 
-        public UserInfo GetConnection(string connectionId)
+        public UserInfo GetConnectionById(string connectionId)
         {
             return connections.Find(x => x.ConnectionId.Equals(connectionId));
         }
@@ -24,7 +24,11 @@ namespace ImPrototype.Hubs
             var info = GetConnectionByName(userName);
             RemoveConnection(info);
         }
-
+        public void RemoveConnectionById(string connectionId)
+        {
+            var info = GetConnectionById(connectionId);
+            RemoveConnection(info);
+        }
         public bool AddConnection(UserInfo userInfo)
         {
             try
