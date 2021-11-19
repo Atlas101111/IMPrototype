@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -9,50 +10,36 @@ namespace ImPrototype.Hubs
 {
     public class ConnectionManager: IUserIdProvider
     {
-        private static readonly List<UserInfo> connections = new List<UserInfo>();
 
-        public UserInfo GetConnectionById(string connectionId)
+        private static readonly ConcurrentDictionary<string,string> connectionDict = new ConcurrentDictionary<string, string>();
+
+        public string GetConnectionByName(string userName)
         {
-            return connections.Find(x => x.ConnectionId.Equals(connectionId));
-        }
-        public UserInfo GetConnectionByName(string userName)
-        {
-            return connections.Find(x => x.UserName.Equals(userName));
+            connectionDict.TryGetValue(userName, out var result);
+            return result;
         }
         public void RemoveConnectionByName(string userName)
         {
-            var info = GetConnectionByName(userName);
-            RemoveConnection(info);
+            connectionDict.TryRemove(userName, out var outVal); 
         }
         public void RemoveConnectionById(string connectionId)
         {
-            var info = GetConnectionById(connectionId);
-            RemoveConnection(info);
+            var itemToRemove = connectionDict.Where(kv => kv.Value.Equals(connectionId));
+            foreach (var item in itemToRemove)
+            {
+                connectionDict.TryRemove(item.Key, out connectionId);
+            }
         }
-        public bool AddConnection(UserInfo userInfo)
+        public bool AddConnection(string accountUuid, string connectionId)
         {
             try
             {
-                connections.Add(userInfo);
+                return connectionDict.TryAdd(accountUuid, connectionId);
             }
             catch(Exception e)
             {
                 return false;
             }
-            return true;
-        }
-
-        public bool RemoveConnection(UserInfo userInfo)
-        {
-            try
-            {
-                connections.Remove(userInfo);
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-            return true;
         }
 
         public string GetUserId(HubConnectionContext connection)
