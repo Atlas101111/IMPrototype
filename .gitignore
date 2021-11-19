@@ -1,13 +1,6 @@
 .vs/
-ImPrototype/bin/Debug/netcoreapp3.1/ImPrototype.dll
-ImPrototype/bin/Debug/netcoreapp3.1/ImPrototype.pdb
-ImPrototype/bin/Debug/netcoreapp3.1/ImPrototype.Views.dll
-ImPrototype/bin/Debug/netcoreapp3.1/ImPrototype.Views.pdb
-ImPrototype/obj/Debug/netcoreapp3.1/ImPrototype.csproj.AssemblyReference.cache
-ImPrototype/obj/Debug/netcoreapp3.1/ImPrototype.dll
-ImPrototype/obj/Debug/netcoreapp3.1/ImPrototype.pdb
-ImPrototype/obj/Debug/netcoreapp3.1/ImPrototype.Views.dll
-ImPrototype/obj/Debug/netcoreapp3.1/ImPrototype.Views.pdb
+ImPrototype/bin/
+ImPrototype/obj/
 temp/
 jmeter.log
 Summary_Report/
