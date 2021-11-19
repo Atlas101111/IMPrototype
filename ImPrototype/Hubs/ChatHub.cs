@@ -28,7 +28,7 @@ namespace ImPrototype.Hubs
 
         public async Task SendMessageP2P(string user, string destUser, string message, string uniqueKey)
         {
-            var connectionId = _connectionManager.GetConnectionByName(destUser)?.ConnectionId;
+            var connectionId = _connectionManager.GetConnectionByName(destUser);
             var newMessage = new ChatMessage
             {
                 From = user,
@@ -58,12 +58,7 @@ namespace ImPrototype.Hubs
 
         public void Login(string userName)
         {
-            _connectionManager.AddConnection(
-                new UserInfo
-                {
-                    ConnectionId = Context.ConnectionId,
-                    UserName = userName,
-                });
+            _connectionManager.AddConnection(userName, Context.ConnectionId);
         }
 
         public void Logout(string userName)
@@ -75,11 +70,12 @@ namespace ImPrototype.Hubs
         {
             try
             {
-                var connectionInfo = _connectionManager.GetConnectionByName(request.AccountUuid);
+                var connectionId = _connectionManager.GetConnectionByName(request.AccountUuid);
                 var chatMessages = new List<ChatMessage>();
-                if (string.IsNullOrEmpty(connectionInfo.ConnectionId))
+                if (string.IsNullOrEmpty(connectionId))
                 {
                     //have not login 
+                    Login(request.AccountUuid);
                     return;
                 }
 
@@ -96,7 +92,7 @@ namespace ImPrototype.Hubs
                 if(chatMessages.Count > 0)
                 {
                     var maxMessageId = chatMessages.OrderBy(x => x.MessageId).ToList().Last().MessageId;
-                    await Clients.Client(connectionInfo.ConnectionId).SendAsync("ReceiveBatchMessages", chatMessages, maxMessageId, request.RequestId);
+                    await Clients.Client(connectionId).SendAsync("ReceiveBatchMessages", chatMessages, maxMessageId, request.RequestId);
                 }
             }
             catch(Exception e)
