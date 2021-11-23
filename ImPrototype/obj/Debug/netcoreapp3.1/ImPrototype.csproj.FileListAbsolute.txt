@@ -740,3 +740,4 @@ D:\ImPrototype\ImPrototype\bin\Debug\netcoreapp3.1\runtimes\win\native\mongocryp
 D:\ImPrototype\ImPrototype\obj\Debug\netcoreapp3.1\ImPrototype.Views.pdb
 D:\ImPrototype\ImPrototype\obj\Debug\netcoreapp3.1\ImPrototype.csproj.CopyComplete
 D:\ImPrototype\ImPrototype\obj\Debug\netcoreapp3.1\ImPrototype.genruntimeconfig.cache
+D:\ImPrototype\ImPrototype\bin\Debug\netcoreapp3.1\web.config

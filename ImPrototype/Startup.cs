@@ -18,6 +18,7 @@ namespace ImPrototype
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            
         }
 
         public IConfiguration Configuration { get; }
@@ -26,7 +27,11 @@ namespace ImPrototype
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddSignalR();
+            services.AddSignalR(hubOptions => 
+            {
+                hubOptions.EnableDetailedErrors = true;
+                hubOptions.StreamBufferCapacity = 10000;
+            });
             services.AddSingleton<IUserIdProvider, ConnectionManager>();
         }
 
@@ -56,6 +61,7 @@ namespace ImPrototype
                 endpoints.MapRazorPages();
                 endpoints.MapHub<ChatHub>("/chatHub");
             });
+
         }
     }
 }

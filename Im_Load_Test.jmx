@@ -18,8 +18,8 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">100</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1000</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">100</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -31,15 +31,15 @@
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
           <stringProp name="HTTPSampler.domain">localhost</stringProp>
-          <stringProp name="HTTPSampler.port">5001</stringProp>
-          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.port">80</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/chatHub/negotiate?negotiateVersion=1</stringProp>
+          <stringProp name="HTTPSampler.path">/ImPrototype/chatHub/negotiate?negotiateVersion=1</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -56,10 +56,10 @@
           <hashTree/>
         </hashTree>
         <eu.luminis.jmeter.wssampler.OpenWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.OpenWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.OpenWebSocketSampler" testname="WebSocket Open Connection" enabled="true">
-          <boolProp name="TLS">true</boolProp>
+          <boolProp name="TLS">false</boolProp>
           <stringProp name="server">localhost</stringProp>
-          <stringProp name="port">5001</stringProp>
-          <stringProp name="path">/chatHub?id=${SingalrConnectionToken}</stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path">/ImPrototype/chatHub?id=${SingalrConnectionToken}</stringProp>
           <stringProp name="connectTimeout">20000</stringProp>
           <stringProp name="readTimeout">6000</stringProp>
         </eu.luminis.jmeter.wssampler.OpenWebSocketSampler>
@@ -126,7 +126,7 @@
           <stringProp name="dataType">Text</stringProp>
           <boolProp name="createNewConnection">false</boolProp>
           <stringProp name="readTimeout">3000</stringProp>
-          <boolProp name="optional">false</boolProp>
+          <boolProp name="optional">true</boolProp>
         </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
         <hashTree/>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Heartbeat Loop Controller" enabled="true">
@@ -167,7 +167,7 @@
             <stringProp name="dataType">Text</stringProp>
             <boolProp name="createNewConnection">false</boolProp>
             <stringProp name="readTimeout">1000</stringProp>
-            <boolProp name="optional">false</boolProp>
+            <boolProp name="optional">true</boolProp>
           </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
           <hashTree/>
           <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="Heartbeat Write" enabled="true">
@@ -212,8 +212,8 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">100</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1000</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">100</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -225,10 +225,10 @@
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
           <stringProp name="HTTPSampler.domain">localhost</stringProp>
-          <stringProp name="HTTPSampler.port">5001</stringProp>
-          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.port">80</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/chatHub/negotiate?negotiateVersion=1</stringProp>
+          <stringProp name="HTTPSampler.path">/ImPrototype/chatHub/negotiate?negotiateVersion=1</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -250,10 +250,10 @@
           <hashTree/>
         </hashTree>
         <eu.luminis.jmeter.wssampler.OpenWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.OpenWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.OpenWebSocketSampler" testname="WebSocket Open Connection" enabled="true">
-          <boolProp name="TLS">true</boolProp>
+          <boolProp name="TLS">false</boolProp>
           <stringProp name="server">localhost</stringProp>
-          <stringProp name="port">5001</stringProp>
-          <stringProp name="path">/chatHub?id=${SingalrConnectionToken}</stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path">/ImPrototype/chatHub?id=${SingalrConnectionToken}</stringProp>
           <stringProp name="connectTimeout">20000</stringProp>
           <stringProp name="readTimeout">6000</stringProp>
         </eu.luminis.jmeter.wssampler.OpenWebSocketSampler>
@@ -320,7 +320,7 @@
           <stringProp name="dataType">Text</stringProp>
           <boolProp name="createNewConnection">false</boolProp>
           <stringProp name="readTimeout">3000</stringProp>
-          <boolProp name="optional">false</boolProp>
+          <boolProp name="optional">true</boolProp>
         </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
         <hashTree/>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Heartbeat Loop Controller" enabled="true">
@@ -361,7 +361,7 @@
             <stringProp name="dataType">Text</stringProp>
             <boolProp name="createNewConnection">false</boolProp>
             <stringProp name="readTimeout">1000</stringProp>
-            <boolProp name="optional">false</boolProp>
+            <boolProp name="optional">true</boolProp>
           </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
           <hashTree/>
           <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="Heartbeat Write" enabled="true">
